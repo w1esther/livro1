@@ -4,24 +4,21 @@ lista_alturas = []
 for n in range (1, 6):
     idade = int(input(f'digite a idade da {n} ª pessoa: '))
     lista_idades.append(idade)
+    altura = int(input(f'digite a altura da {n}ª pessoa em cm: '))
+    lista_alturas.append(altura)
 
-for n in range (1, 6):
-    altura = int(input(f'digite a idade da {n}ª pessoa em cm: '))
+idades_menor_170 = [lista_idades[n] for n in range(5) if lista_alturas[n] < 170]
 
-# any armazena apenas os valores que atenderem à condição
+altura_maiores_20 = [lista_alturas[n] for n in range (5) if lista_idades[n] > 20]
 
-existe_idade = any(n > 20 for n in lista_idades)
-
-if not existe_idade:
-    print('ninguém acima dos 20 anos')
+if not idades_menor_170:
+    print('ninguém abaixo de 170cm')
 else:
-    media_idades = sum(existe_idade) / len(existe_idade)
-    print(f'a média das idades maiores que 20 anos é: {media_idades}')
+    media_idade = sum(idades_menor_170) / len(idades_menor_170)
+    print(f'a média das idades das pessoas com altura inferior a 170cm é: {media_idade}')
 
-existe_altura = any(n < 170 for n in lista_alturas)
-
-if not existe_altura:
-    print('ninguém abaixo de 170 cm')
-else:
-    media_alturas = sum(existe_altura) / len(existe_altura)
-    print(f'a média das alturas inferiores a 170 cm é: {media_alturas}')
+if not altura_maiores_20:
+    print('não há pessoas com mais de 20 anos')
+else: 
+    media_altura = sum(altura_maiores_20) / len(altura_maiores_20)
+    print(f'a altura média das pessoas com mais de 20 anos é: {media_altura}')
